@@ -1,0 +1,17 @@
+{
+  "name": "tech_interview_questions",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hdavidzhu/Cracking.git"
+  },
+  "author": "hdavidzhu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hdavidzhu/Cracking/issues"
+  },
+  "homepage": "https://github.com/hdavidzhu/Cracking#readme",
+  "dependencies": {
+    "prompt": "^1.0.0"
+  }
+}
