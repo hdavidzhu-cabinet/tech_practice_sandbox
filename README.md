@@ -1,3 +1,1 @@
-# Cracking
-
-Revisit 3.4
+# Technical Interview Questions and Answers
