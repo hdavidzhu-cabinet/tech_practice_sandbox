@@ -9,7 +9,7 @@ class MyHashMap:
         hash_index = hash(key) % self.size
         for i, val in enumerate(self.table[hash_index:] + self.table[:hash_index]):
             if val == None or val[0] == key:
-                self.table[(i + hash_index) % self.size] = (key, value)
+                self.table[(i + hash_index) % self.size] = [key, value]
                 self.count = self.count + 1
                 return True
         return False
@@ -40,3 +40,6 @@ if __name__ == "__main__":
     map.set("car", "Mazarati")
     map.set("swag", "Money")
     map.set("noo", "ok")
+    print map.get("dog")
+    map.set("dog", "Blablab")
+    print map.get("dog")
