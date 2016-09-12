@@ -17,7 +17,7 @@ class MyHashMap:
     def get(self, key):
         hash_index = hash(key) % self.size
         for i, val in enumerate(self.table[hash_index:] + self.table[:hash_index]):
-            if val[0] == key:
+            if val != None and val[0] == key:
                 return val[1]
         return None
 
@@ -25,21 +25,9 @@ class MyHashMap:
         hash_index = hash(key) % self.size
         for i, val in enumerate(self.table[hash_index:] + self.table[:hash_index]):
             if val[0] == key:
-                self.table[(i + hash_index) % self.size] = None
+                del self.table[(i + hash_index) % self.size]
                 self.count = self.count - 1
                 return val[1]
 
     def load(self):
         return self.count / float(self.size)
-
-if __name__ == "__main__":
-    map = MyHashMap(5)
-    map.set("dog", "Charles")
-    map.set("banana", "Cool")
-    map.set("triangle", "Weird")
-    map.set("car", "Mazarati")
-    map.set("swag", "Money")
-    map.set("noo", "ok")
-    print map.get("dog")
-    map.set("dog", "Blablab")
-    print map.get("dog")

@@ -27,19 +27,36 @@ class MyHashMapTest(unittest.TestCase):
         self.assertEqual(returned["fake_key"], "fake_data")
 
     def test_cannot_insert_an_element_when_full(self):
-        pass
+        for i in range(6):
+            inserted = self.hashmap.set(str(i), "test")
+        self.assertFalse(inserted)
+        self.assertEqual(self.hashmap.load(), 1)
 
     def test_can_insert_elements_that_have_key_collision(self):
-        pass
+        key1 = "abcd"
+        key2 = "abck"
+        self.assertEqual(hash(key1) % 5, hash(key2) % 5)
+        self.hashmap.set(key1, "key1_data")
+        self.hashmap.set(key2, "key2_data")
+        self.assertEqual(self.hashmap.load(), 0.4)
+        self.assertEqual(self.hashmap.get(key1), "key1_data")
+        self.assertEqual(self.hashmap.get(key2), "key2_data")
 
     def test_can_fetch_an_item(self):
-        pass
+        self.hashmap.set("banana", 3)
+        self.assertEqual(self.hashmap.get("banana"), 3)
 
     def test_can_delete_an_item(self):
-        pass
+        self.hashmap.set("banana", 3)
+        self.assertEqual(self.hashmap.load(), 0.2)
+        self.hashmap.delete("banana")
+        self.assertEqual(self.hashmap.load(), 0)
+        self.assertEqual(self.hashmap.get("banana"), None)
 
     def test_can_display_hashmap_load(self):
-        pass
+        for i in range(5):
+            self.hashmap.set(str(i), "test")
+            self.assertEqual(self.hashmap.load(), float(i + 1) / 5)
 
 if __name__ == '__main__':
     unittest.main()
